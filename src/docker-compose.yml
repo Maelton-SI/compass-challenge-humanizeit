@@ -1,0 +1,13 @@
+services:
+  postgres_database:
+    image: postgres:latest
+    container_name: humanizeit_database
+    environment:
+      POSTGRES_DB: db_test
+      POSTGRES_USER: dba
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5433:5432
+volumes:
+  db_test_volume:
+    name: db_test_volume
