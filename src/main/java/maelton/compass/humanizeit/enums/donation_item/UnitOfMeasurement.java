@@ -1,14 +1,11 @@
-package maelton.compass.humanizeit.enums;
+package maelton.compass.humanizeit.enums.donation_item;
 
 public enum UnitOfMeasurement {
     KILOGRAM("kg"),
     GRAM("g"),
     LITER("l"),
     MILLILITER("ml"),
-    UNIT("unit"),
-    PACKAGE("package", 10), // Example: 10 units per package
-    BOX("box", 12),         // Example: 12 units per box
-    BAG("bag", 5000);       // Example: 5000 grams per bag
+    UNIT("unit");
 
     private final String symbol;
     private final int quantity;

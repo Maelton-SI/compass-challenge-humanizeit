@@ -1,0 +1,2 @@
+DonationCenter donationCenter = DonationCenter.HUMANIZEIT;
+System.out.println(donationCenter.getClass().getSimpleName());
