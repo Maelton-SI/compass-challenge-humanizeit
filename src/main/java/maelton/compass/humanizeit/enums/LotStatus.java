@@ -1,5 +1,5 @@
 package maelton.compass.humanizeit.enums;
 
-public enum DonationLotStatus {
+public enum LotStatus {
     OPEN, DONABLE, DONATED, DISTRIBUTED, TRANSFERRED, DELETED;
 }

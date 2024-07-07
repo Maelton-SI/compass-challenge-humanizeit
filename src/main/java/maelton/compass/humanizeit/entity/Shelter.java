@@ -1,6 +1,6 @@
 package maelton.compass.humanizeit.entity;
 
-public class Shelter {
+public class Shelter implements AppEntity{
     private Long id;
     private String name;
     private String address;

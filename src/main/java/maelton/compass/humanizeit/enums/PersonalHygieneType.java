@@ -1,4 +1,4 @@
-package maelton.compass.humanizeit.enums.donation_item.personal_hygiene;
+package maelton.compass.humanizeit.enums;
 
 public enum PersonalHygieneType {
     SOAP, TOOTHBRUSH, TOOTHPASTE, MENSTRUAL_PAD;

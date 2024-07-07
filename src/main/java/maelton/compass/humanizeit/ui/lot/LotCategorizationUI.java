@@ -1,18 +1,34 @@
-package maelton.compass.humanizeit.ui.donation_lot;
+package maelton.compass.humanizeit.ui.lot;
 
+import maelton.compass.humanizeit.service.LotService;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 
-public class DonationLotItemSelectionUI {
-    //TODO: since input options may vary, VALID_ACTIONS will probably be removed
+public class LotCategorizationUI {
     private static final List<Integer> VALID_ACTIONS = Arrays.asList(1, 2, 3, 4);
 
     public static void run() {
-        showGUI();
-        getInput();
+        while(true) {
+            showGUI();
+            switch (getInput()) {
+                case 1:
+                    LotService.addClothingLot();
+                    break;
+                case 2:
+                    LotService.addPersonalHygieneLot();
+                    break;
+                case 3:
+                    LotService.addFoodLot();
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
     }
 
     private static int getInput() {
@@ -30,17 +46,16 @@ public class DonationLotItemSelectionUI {
         return input;
     }
 
-    //TODO: implement GUI generation logic based on FoodType enums
-    //TODO: change VALID_ACTIONS values based on FoodType enums quantity
     private static void showGUI() {
+        ConsoleUtil.clear();
         System.out.println("||=======================================||");
         System.out.println("||                                       ||");
-        System.out.println("||        ADD AN ITEM TO THIS LOT        ||");
+        System.out.println("|| CHOOSE AN ITEMS CATEGORY FOR THIS LOT ||");
         System.out.println("||                                       ||");
-        System.out.println("|| 1 - RICE                              ||");
-        System.out.println("|| 2 - BEANS                             ||");
-        System.out.println("|| 3 - MILK                              ||");
-        System.out.println("|| 4 - EXIT                              ||");;
+        System.out.println("|| 1 - CLOTHING                          ||");
+        System.out.println("|| 2 - PERSONAL HYGIENE                  ||");
+        System.out.println("|| 3 - FOOD                              ||");
+        System.out.println("|| 4 - BACK                              ||");;
         System.out.println("||                                       ||");
         System.out.println("||=======================================||");
     }
