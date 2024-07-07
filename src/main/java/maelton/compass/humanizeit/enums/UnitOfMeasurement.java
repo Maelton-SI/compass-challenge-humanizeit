@@ -1,4 +1,4 @@
-package maelton.compass.humanizeit.enums.donation_item;
+package maelton.compass.humanizeit.enums;
 
 public enum UnitOfMeasurement {
     KILOGRAM("kg"),

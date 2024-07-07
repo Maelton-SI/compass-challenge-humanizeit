@@ -1,8 +1,8 @@
-package maelton.compass.humanizeit.ui.donation_lot;
+package maelton.compass.humanizeit.ui.item;
 
 import maelton.compass.humanizeit.util.ConsoleUtil;
 
-public class DonationLotItemAdditionUI {
+public class ItemAdditionUI {
 
     public static void run() {
         showGUI();

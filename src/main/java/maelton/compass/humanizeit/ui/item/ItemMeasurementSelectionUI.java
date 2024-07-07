@@ -1,4 +1,4 @@
-package maelton.compass.humanizeit.ui.donation_lot;
+package maelton.compass.humanizeit.ui.item;
 
 import maelton.compass.humanizeit.util.ConsoleUtil;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 
-public class DonationLotItemMeasurementSelectionUI {
+public class ItemMeasurementSelectionUI {
     //TODO: since input options may vary, VALID_ACTIONS will probably be removed
     private static final List<Integer> VALID_ACTIONS = Arrays.asList(1, 2, 3, 4);
 

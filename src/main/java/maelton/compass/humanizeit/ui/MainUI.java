@@ -1,5 +1,6 @@
 package maelton.compass.humanizeit.ui;
 
+import maelton.compass.humanizeit.ui.lot.LotManagerUI;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 
 import java.util.Arrays;
@@ -10,8 +11,22 @@ public class MainUI {
     private static final List<Integer> VALID_ACTIONS = Arrays.asList(1, 2, 3);
 
     public static void run() {
-        showGUI();
-        getInput();
+        while (true) {
+            showGUI();
+            switch (getInput()) {
+                case 1:
+                    // donate
+                    break;
+                case 2:
+                    LotManagerUI.run();
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
     }
 
     //TODO: finish method implementation
@@ -31,6 +46,7 @@ public class MainUI {
     }
 
     private static void showGUI() {
+        ConsoleUtil.clear();
         System.out.println("||======== HumanizeIt ========||");
         System.out.println("||                            ||");
         System.out.println("|| 1 - DONATE                 ||");
