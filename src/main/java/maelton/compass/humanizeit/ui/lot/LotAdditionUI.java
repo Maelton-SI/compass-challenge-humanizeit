@@ -1,32 +1,32 @@
 package maelton.compass.humanizeit.ui.lot;
 
+import maelton.compass.humanizeit.enums.DonationCenter;
 import maelton.compass.humanizeit.service.LotService;
 import maelton.compass.humanizeit.util.ConsoleUtil;
+import maelton.compass.humanizeit.util.UIUtil;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 
-public class LotCategorizationUI {
-    private static final List<Integer> VALID_ACTIONS = Arrays.asList(1, 2, 3, 4);
-
+public class LotAdditionUI {
     public static void run() {
         while(true) {
             showGUI();
             switch (getInput()) {
                 case 1:
-                    LotService.addClothingLot();
+                    LotService.addClothingLot(DonationCenter.HUMANIZEIT);
                     break;
                 case 2:
-                    LotService.addPersonalHygieneLot();
+                    LotService.addPersonalHygieneLot(DonationCenter.HUMANIZEIT);
                     break;
                 case 3:
-                    LotService.addFoodLot();
+                    LotService.addFoodLot(DonationCenter.HUMANIZEIT);
                     break;
                 case 4:
                     return;
                 default:
-                    System.out.println("Invalid choice. Please select a valid option.");
+                    UIUtil.invalidChoice();
             }
         }
     }
@@ -34,14 +34,10 @@ public class LotCategorizationUI {
     private static int getInput() {
         int input = 0;
         try {
-            System.out.print("> ");
             input = ConsoleUtil.getScanner().nextInt();
-            if(!VALID_ACTIONS.contains(input))
-                throw new IllegalArgumentException("Choose a valid number option");
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
         } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please enter a number.");
+            ConsoleUtil.getScanner().nextLine();
+            return -1;
         }
         return input;
     }
@@ -58,5 +54,6 @@ public class LotCategorizationUI {
         System.out.println("|| 4 - BACK                              ||");;
         System.out.println("||                                       ||");
         System.out.println("||=======================================||");
+        System.out.print("> ");
     }
 }
