@@ -1,9 +1,9 @@
-package maelton.compass.humanizeit.entity.factory;
+package maelton.compass.humanizeit.model.factory;
 
-import maelton.compass.humanizeit.entity.item.ClothingItem;
-import maelton.compass.humanizeit.entity.item.FoodItem;
-import maelton.compass.humanizeit.entity.item.Item;
-import maelton.compass.humanizeit.entity.item.PersonalHygieneItem;
+import maelton.compass.humanizeit.model.entity.item.ClothingItem;
+import maelton.compass.humanizeit.model.entity.item.FoodItem;
+import maelton.compass.humanizeit.model.entity.item.Item;
+import maelton.compass.humanizeit.model.entity.item.PersonalHygieneItem;
 import maelton.compass.humanizeit.enums.ItemCategory;
 
 public class ItemFactory {
