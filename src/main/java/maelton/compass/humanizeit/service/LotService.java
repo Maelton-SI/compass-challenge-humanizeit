@@ -3,11 +3,11 @@ package maelton.compass.humanizeit.service;
 import maelton.compass.humanizeit.enums.DonationCenter;
 import maelton.compass.humanizeit.model.dto.LotDTO;
 import maelton.compass.humanizeit.model.entity.Lot;
+import maelton.compass.humanizeit.model.entity.item.Item;
 import maelton.compass.humanizeit.model.factory.LotFactory;
 import maelton.compass.humanizeit.model.entity.item.ClothingItem;
 import maelton.compass.humanizeit.model.entity.item.FoodItem;
 import maelton.compass.humanizeit.model.entity.item.PersonalHygieneItem;
-import maelton.compass.humanizeit.model.interfaces.AppDTO;
 import maelton.compass.humanizeit.repository.LotRepository;
 
 import java.util.List;
@@ -45,5 +45,10 @@ public abstract class LotService {
                 .stream()
                 .map(Lot::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public static LotDTO getOpenLotById(Long id) {
+        Lot<? extends Item> lot = LotRepository.findOpenLotById(id);
+        return lot != null ? new LotDTO(lot.getId(), lot.getCategory(), lot.getName()) : null;
     }
 }

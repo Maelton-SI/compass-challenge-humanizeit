@@ -38,6 +38,18 @@ public class LotRepository {
         return openLots;
     }
 
+    public static Lot<? extends Item> findOpenLotById(Long id) {
+        List<Lot> openLots = findOpenLots();
+        Lot<? extends Item> lot = null;
+        if(!openLots.isEmpty()) {
+            try(EntityManager em = JpaUtil.getEntityManager()) {
+                em.getTransaction().begin();
+                lot = em.find(Lot.class, id);
+            }
+        }
+        return lot;
+    }
+
     public static List<Lot> findAll() {
         List<Lot> lots;
         try(EntityManager em = JpaUtil.getEntityManager()) {

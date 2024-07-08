@@ -1,2 +1,8 @@
 DonationCenter donationCenter = DonationCenter.HUMANIZEIT;
 System.out.println(donationCenter.getClass().getSimpleName());
+
+UI (STRING -> VIEW)
+CONTROLLER (DTO -> STRING)
+SERVICE (MODEL -> DTO)
+REPOSITORY (MODEL -> MODEL)
+DATABASE (MODEL -> BINARY)

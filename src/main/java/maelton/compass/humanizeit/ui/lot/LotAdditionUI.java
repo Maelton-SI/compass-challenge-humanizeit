@@ -13,7 +13,7 @@ public class LotAdditionUI {
     public static void run() {
         while(true) {
             showGUI();
-            switch (getInput()) {
+            switch ((int) UIUtil.getChoice()) {
                 case 1:
                     LotService.addClothingLot(DonationCenter.HUMANIZEIT);
                     break;
@@ -29,17 +29,6 @@ public class LotAdditionUI {
                     UIUtil.invalidChoice();
             }
         }
-    }
-
-    private static int getInput() {
-        int input = 0;
-        try {
-            input = ConsoleUtil.getScanner().nextInt();
-        } catch (InputMismatchException e) {
-            ConsoleUtil.getScanner().nextLine();
-            return -1;
-        }
-        return input;
     }
 
     private static void showGUI() {

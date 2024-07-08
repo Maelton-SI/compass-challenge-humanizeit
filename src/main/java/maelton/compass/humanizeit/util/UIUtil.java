@@ -2,6 +2,8 @@ package maelton.compass.humanizeit.util;
 
 import maelton.compass.humanizeit.model.interfaces.AppEntity;
 
+import java.util.InputMismatchException;
+
 public class UIUtil {
     public static void invalidChoice() {
         try {
@@ -18,5 +20,16 @@ public class UIUtil {
             System.out.println(entity);
             System.out.println();
             System.out.println("SAVED SUCCESSFULLY!");
+    }
+
+    public static long getChoice() {
+        long input = 0L;
+        try {
+            input = ConsoleUtil.getScanner().nextLong();
+        } catch (InputMismatchException e) {
+            ConsoleUtil.getScanner().nextLine();
+            return -1L;
+        }
+        return input;
     }
 }
