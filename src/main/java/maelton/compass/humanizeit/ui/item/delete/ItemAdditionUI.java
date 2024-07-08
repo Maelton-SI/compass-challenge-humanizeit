@@ -1,4 +1,4 @@
-package maelton.compass.humanizeit.ui.item;
+package maelton.compass.humanizeit.ui.item.delete;
 
 import maelton.compass.humanizeit.util.ConsoleUtil;
 

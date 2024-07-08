@@ -8,6 +8,7 @@ import maelton.compass.humanizeit.util.UIUtil;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Objects;
 
 public class LotManagerUI {
     public static void run() {
@@ -27,6 +28,7 @@ public class LotManagerUI {
                     // delete lot
                     break;
                 case 5:
+                    //back
                     return;
                 default:
                     UIUtil.invalidChoice();
@@ -50,7 +52,8 @@ public class LotManagerUI {
 
     private static void showOpenLots() {
         ConsoleUtil.clear();
-        System.out.println(LotController.getOpenLots());
+        String openLots = LotController.getOpenLots();
+        System.out.println(openLots != null ? openLots : "No open lot found!");
         ConsoleUtil.getInput();
     }
 }
