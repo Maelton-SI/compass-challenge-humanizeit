@@ -35,4 +35,8 @@ public class LotController {
         LotDTO lot = LotService.getOpenLotById(id);
         return lot != null ? lot.toString() : null;
     }
+
+    public static String getLotItemCategory(Long id) {
+        return LotService.getLotItemCategory(id);
+    }
 }

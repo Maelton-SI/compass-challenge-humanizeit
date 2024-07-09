@@ -51,4 +51,9 @@ public abstract class LotService {
         Lot<? extends Item> lot = LotRepository.findOpenLotById(id);
         return lot != null ? new LotDTO(lot.getId(), lot.getCategory(), lot.getName()) : null;
     }
+
+    public static String getLotItemCategory(Long id) {
+        Lot<? extends Item> lot = LotRepository.findOpenLotById(id);
+        return lot != null ? lot.getCategory() : null;
+    }
 }

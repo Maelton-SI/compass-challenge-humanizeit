@@ -45,6 +45,7 @@ public class LotRepository {
             try(EntityManager em = JpaUtil.getEntityManager()) {
                 em.getTransaction().begin();
                 lot = em.find(Lot.class, id);
+                em.getTransaction().commit();
             }
         }
         return lot;

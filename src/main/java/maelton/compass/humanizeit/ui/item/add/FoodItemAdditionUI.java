@@ -1,10 +1,9 @@
-package maelton.compass.humanizeit.ui.item;
+package maelton.compass.humanizeit.ui.item.add;
 
-import maelton.compass.humanizeit.ui.lot.LotEditingUI;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
-public class FoodItemUI {
+public class FoodItemAdditionUI {
     public static void run() {
         while(true) {
             showGUI();
@@ -26,11 +25,11 @@ public class FoodItemUI {
             }
         }
     }
-    public static void showGUI() {
+    private static void showGUI() {
         ConsoleUtil.clear();
         System.out.println("||=======================================||");
         System.out.println("||                                       ||");
-        System.out.println("||        ADD AN ITEM TO THIS LOT        ||");
+        System.out.println("||         ADD ITEMS TO THIS LOT         ||");
         System.out.println("||                                       ||");
         System.out.println("|| 1 - RICE                              ||");
         System.out.println("|| 2 - BEANS                             ||");
@@ -39,6 +38,5 @@ public class FoodItemUI {
         System.out.println("||                                       ||");
         System.out.println("||=======================================||");
         System.out.print("> ");
-
     }
 }

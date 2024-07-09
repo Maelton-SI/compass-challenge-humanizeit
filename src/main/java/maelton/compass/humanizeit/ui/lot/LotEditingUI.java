@@ -1,6 +1,12 @@
 package maelton.compass.humanizeit.ui.lot;
 
 import maelton.compass.humanizeit.controller.LotController;
+import maelton.compass.humanizeit.ui.item.add.ClothingItemAdditionUI;
+import maelton.compass.humanizeit.ui.item.add.FoodItemAdditionUI;
+import maelton.compass.humanizeit.ui.item.add.PersonalHygieneItemAdditionUI;
+import maelton.compass.humanizeit.ui.item.subtract.ClothingItemSubtractionUI;
+import maelton.compass.humanizeit.ui.item.subtract.FoodItemSubtractionUI;
+import maelton.compass.humanizeit.ui.item.subtract.PersonalHygieneItemSubtractionUI;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
@@ -25,12 +31,10 @@ public class LotEditingUI {
                         System.out.print("> ");
                         switch ((int) UIUtil.getChoice()) {
                             case 1:
-                                System.out.println("ADD ITEM");
-                                ConsoleUtil.getInput();
+                                getAdditionItemUI(LotController.getLotItemCategory(lotID));
                                 break;
                             case 2:
-                                System.out.println("REMOVE ITEM");
-                                ConsoleUtil.getInput();
+                                getSubtractionItemUI(LotController.getLotItemCategory(lotID));
                                 break;
                             case 3:
                                 editingSelectedLot = false;
@@ -73,6 +77,38 @@ public class LotEditingUI {
             System.out.println("3 - BACK");
         } else {
             System.out.println("No lot found!");
+        }
+    }
+
+    public static void getAdditionItemUI(String lotCategory) {
+        switch (lotCategory) {
+            case "FoodItem":
+                FoodItemAdditionUI.run();
+                break;
+            case "ClothingItem":
+                ClothingItemAdditionUI.run();
+                break;
+            case "PersonalHygieneItem":
+                PersonalHygieneItemAdditionUI.run();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + lotCategory);
+        }
+    }
+
+    public static void getSubtractionItemUI(String lotCategory) {
+        switch (lotCategory) {
+            case "FoodItem":
+                FoodItemSubtractionUI.run();
+                break;
+            case "ClothingItem":
+                ClothingItemSubtractionUI.run();
+                break;
+            case "PersonalHygieneItem":
+                PersonalHygieneItemSubtractionUI.run();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + lotCategory);
         }
     }
 }
