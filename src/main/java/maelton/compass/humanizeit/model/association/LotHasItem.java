@@ -1,4 +1,4 @@
-package maelton.compass.humanizeit.model.entity.database;
+package maelton.compass.humanizeit.model.association;
 
 import jakarta.persistence.*;
 import maelton.compass.humanizeit.model.entity.Lot;

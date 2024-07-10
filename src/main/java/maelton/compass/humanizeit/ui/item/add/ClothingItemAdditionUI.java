@@ -1,7 +1,7 @@
 package maelton.compass.humanizeit.ui.item.add;
 
 import maelton.compass.humanizeit.controller.ItemController;
-import maelton.compass.humanizeit.enums.ClothingType;
+import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 

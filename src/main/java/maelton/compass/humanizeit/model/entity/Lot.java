@@ -7,12 +7,15 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
+import jakarta.persistence.Column;
+
 import lombok.Getter;
 import lombok.Setter;
+
 import maelton.compass.humanizeit.model.dto.LotDTO;
 import maelton.compass.humanizeit.model.entity.item.Item;
-import maelton.compass.humanizeit.enums.DonationCenter;
-import maelton.compass.humanizeit.enums.LotStatus;
+import maelton.compass.humanizeit.model.enums.DonationCenter;
+import maelton.compass.humanizeit.model.enums.LotStatus;
 import maelton.compass.humanizeit.model.interfaces.AppEntity;
 
 import java.time.LocalDateTime;
@@ -34,6 +37,8 @@ public class Lot<T extends Item> implements AppEntity {
 
     @Enumerated(EnumType.STRING)
     private DonationCenter manager;
+
+    @Column(name="last_edited")
     private LocalDateTime lastTimeEdited;
 
     protected Lot() {}
@@ -52,7 +57,7 @@ public class Lot<T extends Item> implements AppEntity {
         this.category = category.getSimpleName();
         this.quantityOfItems = 0;
         this.status = LotStatus.OPEN;
-        this.manager = null;
+        this.manager = manager;
         this.lastTimeEdited = LocalDateTime.now();
     }
 

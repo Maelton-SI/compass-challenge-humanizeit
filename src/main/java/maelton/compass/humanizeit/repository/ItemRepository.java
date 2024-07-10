@@ -1,7 +1,7 @@
 package maelton.compass.humanizeit.repository;
 
 import jakarta.persistence.EntityManager;
-import maelton.compass.humanizeit.exception.ObjectPersistenceException;
+import maelton.compass.humanizeit.exception.AppEntityPersistenceException;
 import maelton.compass.humanizeit.model.entity.item.Item;
 import maelton.compass.humanizeit.util.JpaUtil;
 
@@ -16,7 +16,7 @@ public class ItemRepository {
             return item;
         } catch(Exception e) {
             em.getTransaction().rollback();
-            throw new ObjectPersistenceException(item, e.getMessage());
+            throw new AppEntityPersistenceException(item, e.getMessage());
         } finally {
             em.close();
         }

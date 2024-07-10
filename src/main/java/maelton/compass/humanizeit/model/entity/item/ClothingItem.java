@@ -4,9 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
-import maelton.compass.humanizeit.enums.ClothingGender;
-import maelton.compass.humanizeit.enums.ClothingSize;
-import maelton.compass.humanizeit.enums.ClothingType;
+import maelton.compass.humanizeit.model.enums.ClothingGender;
+import maelton.compass.humanizeit.model.enums.ClothingSize;
+import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.model.interfaces.AppDTO;
 
 @Entity

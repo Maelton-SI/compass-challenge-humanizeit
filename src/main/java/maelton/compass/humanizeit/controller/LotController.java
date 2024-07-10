@@ -1,7 +1,9 @@
 package maelton.compass.humanizeit.controller;
 
+import maelton.compass.humanizeit.model.enums.DonationCenter;
 import maelton.compass.humanizeit.model.dto.LotDTO;
 import maelton.compass.humanizeit.service.LotService;
+import maelton.compass.humanizeit.util.UIUtil;
 
 import java.util.List;
 
@@ -39,4 +41,16 @@ public class LotController {
     public static String getLotItemCategory(Long id) {
         return LotService.getLotItemCategory(id);
     }
+
+    public static String addClothingLot(DonationCenter manager) {
+        return UIUtil.entitySavedTest(LotService.addClothingLot(manager));
+    };
+
+    public static String addFoodLot(DonationCenter manager) {
+        return UIUtil.entitySavedTest(LotService.addFoodLot(manager));
+    };
+
+    public static String addPersonalHygieneLot(DonationCenter manager) {
+        return UIUtil.entitySavedTest(LotService.addPersonalHygieneLot(manager));
+    };
 }

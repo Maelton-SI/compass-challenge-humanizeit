@@ -9,8 +9,8 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 import maelton.compass.humanizeit.model.interfaces.AppEntity;
-import maelton.compass.humanizeit.enums.ItemCategory;
-import maelton.compass.humanizeit.enums.UnitOfMeasurement;
+import maelton.compass.humanizeit.model.enums.ItemCategory;
+import maelton.compass.humanizeit.model.enums.UnitOfMeasurement;
 
 import java.util.*;
 

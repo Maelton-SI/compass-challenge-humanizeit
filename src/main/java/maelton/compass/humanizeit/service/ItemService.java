@@ -1,8 +1,6 @@
 package maelton.compass.humanizeit.service;
 
-import maelton.compass.humanizeit.enums.ClothingGender;
-import maelton.compass.humanizeit.enums.ClothingSize;
-import maelton.compass.humanizeit.enums.ClothingType;
+import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.model.entity.item.ClothingItem;
 import maelton.compass.humanizeit.model.entity.item.FoodItem;
 import maelton.compass.humanizeit.model.entity.item.PersonalHygieneItem;

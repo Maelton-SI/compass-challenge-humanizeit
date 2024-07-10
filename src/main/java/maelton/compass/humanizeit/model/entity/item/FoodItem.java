@@ -2,7 +2,7 @@ package maelton.compass.humanizeit.model.entity.item;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import maelton.compass.humanizeit.enums.FoodType;
+import maelton.compass.humanizeit.model.enums.FoodType;
 import maelton.compass.humanizeit.model.interfaces.AppDTO;
 
 @Entity
