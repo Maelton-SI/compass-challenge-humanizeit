@@ -22,6 +22,16 @@ public class UIUtil {
             System.out.println("SAVED SUCCESSFULLY!");
     }
 
+    public static String entitySavedTest(AppEntity entity) {
+        return entity.toString() + "\n" + "SAVED SUCCESSFULLY!";
+    }
+
+    public static void errorSavingEntity(AppEntity entity) {
+        ConsoleUtil.clear();
+        System.out.println(entity);
+        System.out.println("COULD NOT BE SAVED!");
+    }
+
     public static long getChoice() {
         long input = 0L;
         try {

@@ -1,5 +1,7 @@
 package maelton.compass.humanizeit.ui.item.add;
 
+import maelton.compass.humanizeit.controller.ItemController;
+import maelton.compass.humanizeit.enums.ClothingType;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
@@ -9,10 +11,14 @@ public class ClothingItemAdditionUI {
             showGUI();
             switch((int) UIUtil.getChoice()) {
                 case 1:
-                    System.out.println("SHIRT");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addClothingItem(ClothingType.SHIRT));
+                    ConsoleUtil.getInput();
                     break;
                 case 2:
-                    System.out.println("JACKET");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addClothingItem(ClothingType.JACKET));
+                    ConsoleUtil.getInput();
                     break;
                 case 3:
 //                    LotEditingUI.run();
