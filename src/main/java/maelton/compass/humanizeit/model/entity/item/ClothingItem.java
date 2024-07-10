@@ -22,7 +22,6 @@ public class ClothingItem extends Item {
     private ClothingSize size;
 
     public ClothingItem() {}
-
     public ClothingItem(ClothingType type) {
         this.type = type;
     }

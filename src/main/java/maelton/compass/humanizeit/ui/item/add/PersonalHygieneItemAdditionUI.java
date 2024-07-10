@@ -1,5 +1,8 @@
 package maelton.compass.humanizeit.ui.item.add;
 
+import maelton.compass.humanizeit.controller.ItemController;
+import maelton.compass.humanizeit.model.enums.ClothingType;
+import maelton.compass.humanizeit.model.enums.PersonalHygieneType;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
@@ -9,16 +12,24 @@ public class PersonalHygieneItemAdditionUI {
             showGUI();
             switch((int) UIUtil.getChoice()) {
                 case 1:
-                    System.out.println("SOAP");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.SOAP));
+                    ConsoleUtil.getInput();
                     break;
                 case 2:
-                    System.out.println("TOOTHBRUSH");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.TOOTHBRUSH));
+                    ConsoleUtil.getInput();
                     break;
                 case 3:
-                    System.out.println("TOOTHPASTE");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.TOOTHPASTE));
+                    ConsoleUtil.getInput();
                     break;
                 case 4:
-                    System.out.println("MENSTRUAL PAD");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.MENSTRUAL_PAD));
+                    ConsoleUtil.getInput();
                     break;
                 case 5:
 //                    LotEditingUI.run();

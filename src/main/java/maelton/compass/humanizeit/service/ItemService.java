@@ -4,6 +4,8 @@ import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.model.entity.item.ClothingItem;
 import maelton.compass.humanizeit.model.entity.item.FoodItem;
 import maelton.compass.humanizeit.model.entity.item.PersonalHygieneItem;
+import maelton.compass.humanizeit.model.enums.FoodType;
+import maelton.compass.humanizeit.model.enums.PersonalHygieneType;
 import maelton.compass.humanizeit.model.factory.ItemFactory;
 import maelton.compass.humanizeit.repository.ItemRepository;
 
@@ -14,14 +16,14 @@ public class ItemService {
         return item;
     }
 
-    public static FoodItem addFoodItem() {
-        FoodItem item = ItemFactory.createFoodItem();
+    public static FoodItem addFoodItem(FoodType type) {
+        FoodItem item = ItemFactory.createFoodItem(type);
         ItemRepository.save(item);
         return item;
     }
 
-    public static PersonalHygieneItem addPersonalHygieneItem() {
-        PersonalHygieneItem item = ItemFactory.createPersonalHygieneItem();
+    public static PersonalHygieneItem addPersonalHygieneItem(PersonalHygieneType type) {
+        PersonalHygieneItem item = ItemFactory.createPersonalHygieneItem(type);
         ItemRepository.save(item);
         return item;
     }

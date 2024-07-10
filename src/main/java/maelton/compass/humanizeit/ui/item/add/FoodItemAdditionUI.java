@@ -1,5 +1,8 @@
 package maelton.compass.humanizeit.ui.item.add;
 
+import maelton.compass.humanizeit.controller.ItemController;
+import maelton.compass.humanizeit.model.enums.ClothingType;
+import maelton.compass.humanizeit.model.enums.FoodType;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
@@ -9,13 +12,19 @@ public class FoodItemAdditionUI {
             showGUI();
             switch((int) UIUtil.getChoice()) {
                 case 1:
-                    System.out.println("RICE");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addFoodItem(FoodType.RICE));
+                    ConsoleUtil.getInput();
                     break;
                 case 2:
-                    System.out.println("BEANS");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addFoodItem(FoodType.BEANS));
+                    ConsoleUtil.getInput();
                     break;
                 case 3:
-                    System.out.println("MILK");
+                    ConsoleUtil.clear();
+                    System.out.println(ItemController.addFoodItem(FoodType.MILK));
+                    ConsoleUtil.getInput();
                     break;
                 case 4:
 //                    LotEditingUI.run();
