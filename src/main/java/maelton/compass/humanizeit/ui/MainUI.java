@@ -4,15 +4,13 @@ import maelton.compass.humanizeit.ui.lot.LotManagerUI;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.List;
 
 public class MainUI {
     public static void run() {
         while (true) {
             showGUI();
-            switch (getChoice()) {
+            switch ((int) UIUtil.getChoice()) {
                 case 1:
                     // donate
                     break;
@@ -25,17 +23,6 @@ public class MainUI {
                     UIUtil.invalidChoice();
             }
         }
-    }
-
-    private static int getChoice() {
-        int input = 0;
-        try {
-            input = ConsoleUtil.getScanner().nextInt();
-        } catch (InputMismatchException e) {
-            ConsoleUtil.getScanner().nextLine();
-            return -1;
-        }
-        return input;
     }
 
     private static void showGUI() {

@@ -2,6 +2,7 @@ package maelton.compass.humanizeit.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import maelton.compass.humanizeit.exception.AppEntityPersistenceException;
 import maelton.compass.humanizeit.model.entity.Lot;
 import maelton.compass.humanizeit.model.entity.item.Item;
 import maelton.compass.humanizeit.util.ConsoleUtil;
@@ -12,18 +13,16 @@ import java.util.List;
 
 public class LotRepository {
 
-    public static void save(Lot<? extends Item> lot) {
+    public static Lot<? extends Item> save(Lot<? extends Item> lot) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
             em.getTransaction().begin();
                 em.persist(lot);
             em.getTransaction().commit();
-            UIUtil.entitySaved(lot);
-            ConsoleUtil.getInput();
+            return lot;
         } catch(Exception e) {
             em.getTransaction().rollback();
-            System.out.println("Error saving lot.");
-            System.out.println("Error: " + e.getMessage());
+            throw new AppEntityPersistenceException(lot, e.getMessage());
         } finally {
             em.close();
         }
@@ -36,6 +35,19 @@ public class LotRepository {
             openLots = query.getResultList();
         }
         return openLots;
+    }
+
+    public static Lot<? extends Item> findOpenLotById(Long id) {
+        List<Lot> openLots = findOpenLots();
+        Lot<? extends Item> lot = null;
+        if(!openLots.isEmpty()) {
+            try(EntityManager em = JpaUtil.getEntityManager()) {
+                em.getTransaction().begin();
+                lot = em.find(Lot.class, id);
+                em.getTransaction().commit();
+            }
+        }
+        return lot;
     }
 
     public static List<Lot> findAll() {

@@ -1,4 +1,4 @@
-package maelton.compass.humanizeit.enums;
+package maelton.compass.humanizeit.model.enums;
 
 import lombok.Getter;
 

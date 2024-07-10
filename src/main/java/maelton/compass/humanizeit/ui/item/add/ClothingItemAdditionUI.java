@@ -1,48 +1,42 @@
-package maelton.compass.humanizeit.ui.lot;
+package maelton.compass.humanizeit.ui.item.add;
 
-import maelton.compass.humanizeit.controller.LotController;
-import maelton.compass.humanizeit.model.enums.DonationCenter;
+import maelton.compass.humanizeit.controller.ItemController;
+import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
-public class LotAdditionUI {
+public class ClothingItemAdditionUI {
     public static void run() {
         while(true) {
             showGUI();
-            switch ((int) UIUtil.getChoice()) {
+            switch((int) UIUtil.getChoice()) {
                 case 1:
                     ConsoleUtil.clear();
-                    System.out.println(LotController.addClothingLot(DonationCenter.HUMANIZEIT));
+                    System.out.println(ItemController.addClothingItem(ClothingType.SHIRT));
                     ConsoleUtil.getInput();
                     break;
                 case 2:
                     ConsoleUtil.clear();
-                    System.out.println(LotController.addFoodLot(DonationCenter.HUMANIZEIT));
+                    System.out.println(ItemController.addClothingItem(ClothingType.JACKET));
                     ConsoleUtil.getInput();
                     break;
                 case 3:
-                    ConsoleUtil.clear();
-                    System.out.println(LotController.addPersonalHygieneLot(DonationCenter.HUMANIZEIT));
-                    ConsoleUtil.getInput();
-                    break;
-                case 4:
+//                    LotEditingUI.run();
                     return;
                 default:
                     UIUtil.invalidChoice();
             }
         }
     }
-
     private static void showGUI() {
         ConsoleUtil.clear();
         System.out.println("||=======================================||");
         System.out.println("||                                       ||");
-        System.out.println("|| CHOOSE AN ITEMS CATEGORY FOR THIS LOT ||");
+        System.out.println("||         ADD ITEMS TO THIS LOT         ||");
         System.out.println("||                                       ||");
-        System.out.println("|| 1 - CLOTHING                          ||");
-        System.out.println("|| 2 - FOOD                              ||");
-        System.out.println("|| 3 - PERSONAL HYGIENE                  ||");
-        System.out.println("|| 4 - BACK                              ||");;
+        System.out.println("|| 1 - SHIRT                             ||");
+        System.out.println("|| 2 - JACKET                            ||");
+        System.out.println("|| 3 - EXIT                              ||");
         System.out.println("||                                       ||");
         System.out.println("||=======================================||");
         System.out.print("> ");
