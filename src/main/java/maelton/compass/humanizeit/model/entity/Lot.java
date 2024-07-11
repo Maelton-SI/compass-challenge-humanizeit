@@ -48,7 +48,7 @@ public class Lot<T extends Item> implements AppEntity {
         this.category = category.getSimpleName();
         this.quantityOfItems = 0;
         this.status = LotStatus.OPEN;
-        this.manager = null;
+        this.manager = manager;
         this.lastTimeEdited = LocalDateTime.now();
     }
 

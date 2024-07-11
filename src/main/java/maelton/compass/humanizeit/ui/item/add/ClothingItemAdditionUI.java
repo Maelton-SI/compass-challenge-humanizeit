@@ -11,6 +11,7 @@ public class ClothingItemAdditionUI {
             showGUI();
             switch((int) UIUtil.getChoice()) {
                 case 1:
+                    //
                     ConsoleUtil.clear();
                     System.out.println(ItemController.addClothingItem(ClothingType.SHIRT));
                     ConsoleUtil.getInput();

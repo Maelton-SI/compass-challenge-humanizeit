@@ -4,13 +4,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
-import maelton.compass.humanizeit.model.enums.ClothingGender;
-import maelton.compass.humanizeit.model.enums.ClothingSize;
-import maelton.compass.humanizeit.model.enums.ClothingType;
+import jakarta.persistence.UniqueConstraint;
+
+import maelton.compass.humanizeit.model.enums.*;
 import maelton.compass.humanizeit.model.interfaces.AppDTO;
 
+import java.time.LocalDateTime;
+
 @Entity
-@Table(name="tab_clothing_item")
+@Table(name="tab_clothing_item",
+       uniqueConstraints = {
+            @UniqueConstraint(
+                    name = "tab_clothing_item_un",
+                    columnNames = {"type", "gender", "size"}
+            )
+       })
 public class ClothingItem extends Item {
     @Enumerated(EnumType.STRING)
     private ClothingType type;
@@ -24,6 +32,10 @@ public class ClothingItem extends Item {
     public ClothingItem() {}
     public ClothingItem(ClothingType type) {
         this.type = type;
+        this.gender = ClothingGender.DEFAULT;
+        this.size = ClothingSize.DEFAULT;
+
+        this.category = ItemCategory.CLOTHING;
     }
 
     //TO BE USED IN THE FUTURE
