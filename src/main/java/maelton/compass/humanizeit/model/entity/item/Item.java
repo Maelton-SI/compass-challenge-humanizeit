@@ -12,6 +12,8 @@ import jakarta.persistence.UniqueConstraint;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 
+import lombok.Getter;
+
 import maelton.compass.humanizeit.model.interfaces.AppEntity;
 import maelton.compass.humanizeit.model.enums.ItemCategory;
 import maelton.compass.humanizeit.model.enums.UnitOfMeasurement;
@@ -32,6 +34,7 @@ public abstract class Item implements AppEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="item_id")
+    @Getter
     protected Long id;
 
     @Column(name="category")

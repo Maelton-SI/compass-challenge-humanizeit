@@ -15,21 +15,12 @@ public class UIUtil {
         }
     }
 
-    public static void entitySaved(AppEntity entity) {
-            ConsoleUtil.clear();
-            System.out.println(entity);
-            System.out.println();
-            System.out.println("SAVED SUCCESSFULLY!");
-    }
-
-    public static String entitySavedTest(AppEntity entity) {
+    public static String entitySaved(AppEntity entity) {
         return entity.toString() + "\n" + "SAVED SUCCESSFULLY!";
     }
 
-    public static void errorSavingEntity(AppEntity entity) {
-        ConsoleUtil.clear();
-        System.out.println(entity);
-        System.out.println("COULD NOT BE SAVED!");
+    public static String errorSavingEntity(AppEntity entity) {
+        return entity.toString() + "\n" + "COULD NOT BE SAVED!";
     }
 
     public static long getChoice() {

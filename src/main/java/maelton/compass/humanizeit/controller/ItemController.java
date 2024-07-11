@@ -1,5 +1,6 @@
 package maelton.compass.humanizeit.controller;
 
+import maelton.compass.humanizeit.exception.AppEntityAlreadyExistsException;
 import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.model.enums.FoodType;
 import maelton.compass.humanizeit.model.enums.PersonalHygieneType;
@@ -8,14 +9,26 @@ import maelton.compass.humanizeit.util.UIUtil;
 
 public class ItemController {
     public static String addClothingItem(ClothingType type) {
-        return UIUtil.entitySavedTest(ItemService.addClothingItem(type));
+        try {
+            return UIUtil.entitySaved(ItemService.addClothingItem(type));
+        } catch(AppEntityAlreadyExistsException e) {
+            return e.getMessage();
+        }
     };
 
     public static String addFoodItem(FoodType type) {
-        return UIUtil.entitySavedTest(ItemService.addFoodItem(type));
+        try {
+            return UIUtil.entitySaved(ItemService.addFoodItem(type));
+        } catch (AppEntityAlreadyExistsException e) {
+            return e.getMessage();
+        }
     };
 
     public static String addPersonalHygieneItem(PersonalHygieneType type) {
-        return UIUtil.entitySavedTest(ItemService.addPersonalHygieneItem(type));
+        try {
+            return UIUtil.entitySaved(ItemService.addPersonalHygieneItem(type));
+        } catch (AppEntityAlreadyExistsException e) {
+            return e.getMessage();
+        }
     };
 }
