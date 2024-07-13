@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import maelton.compass.humanizeit.model.dto.LotDTO;
-import maelton.compass.humanizeit.model.entity.item.Item;
+import maelton.compass.humanizeit.model.interfaces.Item;
 import maelton.compass.humanizeit.model.enums.DonationCenter;
 import maelton.compass.humanizeit.model.enums.LotStatus;
 import maelton.compass.humanizeit.model.interfaces.AppEntity;

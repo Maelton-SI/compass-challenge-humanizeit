@@ -1,11 +1,18 @@
 package maelton.compass.humanizeit.model.association;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.FetchType;
+
+import lombok.Setter;
 import maelton.compass.humanizeit.model.entity.Lot;
-import maelton.compass.humanizeit.model.entity.item.Item;
+import maelton.compass.humanizeit.model.interfaces.Item;
 
-import java.io.Serializable;
-
+@Setter
 @Entity
 @Table(name="tab_lot_has_item")
 public class LotHasItem {
@@ -17,19 +24,10 @@ public class LotHasItem {
     @JoinColumn(name="id_lot")
     private Lot lot;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("itemId")
-    @JoinColumn(name="id_item")
-    private Item item;
-    private int quantity;
-}
-
-@Embeddable
-class LotHasItemId implements Serializable {
-    @Column(name="lot_id")
-    private Long lotId;
-
-    @Column(name="item_id")
-    private Long itemId;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @MapsId("itemId")
+//    @JoinColumn(name="id_item")
+//    private <T implements Item> item;
+//    private int quantity;
 }
 

@@ -2,12 +2,10 @@ package maelton.compass.humanizeit.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import maelton.compass.humanizeit.exception.AppEntityPersistenceException;
+import maelton.compass.humanizeit.exception.AppEntitySaveFailureException;
 import maelton.compass.humanizeit.model.entity.Lot;
-import maelton.compass.humanizeit.model.entity.item.Item;
-import maelton.compass.humanizeit.util.ConsoleUtil;
+import maelton.compass.humanizeit.model.interfaces.Item;
 import maelton.compass.humanizeit.util.JpaUtil;
-import maelton.compass.humanizeit.util.UIUtil;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class LotRepository {
             return lot;
         } catch(Exception e) {
             em.getTransaction().rollback();
-            throw new AppEntityPersistenceException(lot, e.getMessage());
+            throw new AppEntitySaveFailureException(lot, e.getMessage());
         } finally {
             em.close();
         }

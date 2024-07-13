@@ -1,35 +1,27 @@
 package maelton.compass.humanizeit.ui.item.add;
 
 import maelton.compass.humanizeit.controller.ItemController;
-import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.model.enums.PersonalHygieneType;
+import maelton.compass.humanizeit.ui.lot_has_item.SettingItemQuantityUI;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
 public class PersonalHygieneItemAdditionUI {
-    public static void run() {
+    public static void run(long lotId) {
         while(true) {
             showGUI();
             switch((int) UIUtil.getChoice()) {
                 case 1:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.SOAP));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addPersonalHygieneItem(PersonalHygieneType.SOAP), lotId);
                     break;
                 case 2:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.TOOTHBRUSH));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addPersonalHygieneItem(PersonalHygieneType.TOOTHBRUSH), lotId);
                     break;
                 case 3:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.TOOTHPASTE));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addPersonalHygieneItem(PersonalHygieneType.TOOTHPASTE), lotId);
                     break;
                 case 4:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addPersonalHygieneItem(PersonalHygieneType.MENSTRUAL_PAD));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addPersonalHygieneItem(PersonalHygieneType.MENSTRUAL_PAD), lotId);
                     break;
                 case 5:
 //                    LotEditingUI.run();

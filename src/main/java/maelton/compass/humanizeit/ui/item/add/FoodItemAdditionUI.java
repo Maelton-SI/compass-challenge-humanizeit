@@ -1,30 +1,24 @@
 package maelton.compass.humanizeit.ui.item.add;
 
 import maelton.compass.humanizeit.controller.ItemController;
-import maelton.compass.humanizeit.model.enums.ClothingType;
 import maelton.compass.humanizeit.model.enums.FoodType;
+import maelton.compass.humanizeit.ui.lot_has_item.SettingItemQuantityUI;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
 public class FoodItemAdditionUI {
-    public static void run() {
+    public static void run(long lotId) {
         while(true) {
             showGUI();
             switch((int) UIUtil.getChoice()) {
                 case 1:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addFoodItem(FoodType.RICE));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addFoodItem(FoodType.RICE), lotId);
                     break;
                 case 2:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addFoodItem(FoodType.BEANS));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addFoodItem(FoodType.BEANS), lotId);
                     break;
                 case 3:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addFoodItem(FoodType.MILK));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addFoodItem(FoodType.MILK), lotId);
                     break;
                 case 4:
 //                    LotEditingUI.run();

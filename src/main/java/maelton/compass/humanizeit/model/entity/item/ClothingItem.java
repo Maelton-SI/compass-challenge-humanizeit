@@ -1,25 +1,43 @@
 package maelton.compass.humanizeit.model.entity.item;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+
+import lombok.Getter;
 
 import maelton.compass.humanizeit.model.enums.*;
+
 import maelton.compass.humanizeit.model.interfaces.AppDTO;
+import maelton.compass.humanizeit.model.interfaces.Item;
 
-import java.time.LocalDateTime;
-
+@Getter
 @Entity
 @Table(name="tab_clothing_item",
        uniqueConstraints = {
             @UniqueConstraint(
                     name = "tab_clothing_item_un",
-                    columnNames = {"type", "gender", "size"}
+                    columnNames = {"type", "gender", "size", "unit_of_measurement"}
             )
        })
-public class ClothingItem extends Item {
+public class ClothingItem implements Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private final ItemCategory CATEGORY = ItemCategory.CLOTHING;
+
+    @Column(name="unit_of_measurement")
+    @Enumerated(EnumType.STRING)
+    private UnitOfMeasurement unitOfMeasurement;
+
     @Enumerated(EnumType.STRING)
     private ClothingType type;
 
@@ -34,26 +52,23 @@ public class ClothingItem extends Item {
         this.type = type;
         this.gender = ClothingGender.DEFAULT;
         this.size = ClothingSize.DEFAULT;
-
-        this.category = ItemCategory.CLOTHING;
-    }
-
-    //TO BE USED IN THE FUTURE
-    public ClothingItem(ClothingType type, ClothingGender gender, ClothingSize size) {
-        this.type = type;
-        this.gender = gender;
-        this.size = size;
+        this.unitOfMeasurement = UnitOfMeasurement.DEFAULT;
     }
 
     @Override
     public String toString() {
         return "ID: " + this.id +
                 " TYPE: " + this.type +
-                " CATEGORY: " + this.category;
+                " CATEGORY: " + this.CATEGORY;
     }
 
     @Override
     public AppDTO toDTO() {
         return null;
+    }
+
+    @Override
+    public ItemCategory getCategory() {
+        return this.CATEGORY;
     }
 }

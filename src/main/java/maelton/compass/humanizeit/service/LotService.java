@@ -3,7 +3,7 @@ package maelton.compass.humanizeit.service;
 import maelton.compass.humanizeit.model.enums.DonationCenter;
 import maelton.compass.humanizeit.model.dto.LotDTO;
 import maelton.compass.humanizeit.model.entity.Lot;
-import maelton.compass.humanizeit.model.entity.item.Item;
+import maelton.compass.humanizeit.model.interfaces.Item;
 import maelton.compass.humanizeit.model.factory.LotFactory;
 import maelton.compass.humanizeit.model.entity.item.ClothingItem;
 import maelton.compass.humanizeit.model.entity.item.FoodItem;

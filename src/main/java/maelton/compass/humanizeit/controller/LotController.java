@@ -33,12 +33,11 @@ public class LotController {
         }
     }
 
-    public static String getOpenLotById(Long id) {
-        LotDTO lot = LotService.getOpenLotById(id);
-        return lot != null ? lot.toString() : null;
+    public static LotDTO getOpenLotById(long id) {
+        return LotService.getOpenLotById(id);
     }
 
-    public static String getLotItemCategory(Long id) {
+    public static String getLotItemCategory(long id) {
         return LotService.getLotItemCategory(id);
     }
 

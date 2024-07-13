@@ -2,24 +2,20 @@ package maelton.compass.humanizeit.ui.item.add;
 
 import maelton.compass.humanizeit.controller.ItemController;
 import maelton.compass.humanizeit.model.enums.ClothingType;
+import maelton.compass.humanizeit.ui.lot_has_item.SettingItemQuantityUI;
 import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
 public class ClothingItemAdditionUI {
-    public static void run() {
+    public static void run(long lotId) {
         while(true) {
             showGUI();
             switch((int) UIUtil.getChoice()) {
                 case 1:
-                    //
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addClothingItem(ClothingType.SHIRT));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addClothingItem(ClothingType.SHIRT), lotId);
                     break;
                 case 2:
-                    ConsoleUtil.clear();
-                    System.out.println(ItemController.addClothingItem(ClothingType.JACKET));
-                    ConsoleUtil.getInput();
+                    SettingItemQuantityUI.run(ItemController.addClothingItem(ClothingType.JACKET), lotId);
                     break;
                 case 3:
 //                    LotEditingUI.run();

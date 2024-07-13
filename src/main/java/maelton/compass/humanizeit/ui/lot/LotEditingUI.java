@@ -1,6 +1,7 @@
 package maelton.compass.humanizeit.ui.lot;
 
 import maelton.compass.humanizeit.controller.LotController;
+import maelton.compass.humanizeit.model.dto.LotDTO;
 import maelton.compass.humanizeit.ui.item.add.ClothingItemAdditionUI;
 import maelton.compass.humanizeit.ui.item.add.FoodItemAdditionUI;
 import maelton.compass.humanizeit.ui.item.add.PersonalHygieneItemAdditionUI;
@@ -18,23 +19,23 @@ public class LotEditingUI {
             Optional<String> openLots = Optional.ofNullable(LotController.getOpenLots());
             if (openLots.isPresent()) {
                 showGUI(openLots);
-                long lotID = UIUtil.getChoice();
-                if (lotID <= 0)
+                long lotId = UIUtil.getChoice();
+                if (lotId <= 0)
 //                    LotManagerUI.run();
                     break;
 
-                Optional<String> selectedLot = Optional.ofNullable(LotController.getOpenLotById(lotID));
-                if (selectedLot.isPresent()) {
+                LotDTO selectedLotDTO = LotController.getOpenLotById(lotId);
+                if (selectedLotDTO != null) {
                     boolean editingSelectedLot = true;
                     while(editingSelectedLot) {
-                        selectedLotGUI(lotID);
+                        selectedLotGUI(selectedLotDTO);
                         System.out.print("> ");
                         switch ((int) UIUtil.getChoice()) {
                             case 1:
-                                getAdditionItemUI(LotController.getLotItemCategory(lotID));
+                                getAdditionItemUI(selectedLotDTO);
                                 break;
                             case 2:
-                                getSubtractionItemUI(LotController.getLotItemCategory(lotID));
+                                getSubtractionItemUI(selectedLotDTO);
                                 break;
                             case 3:
                                 editingSelectedLot = false;
@@ -65,11 +66,10 @@ public class LotEditingUI {
         }
     }
 
-    private static void selectedLotGUI(long lotId) {
+    private static void selectedLotGUI(LotDTO lotDTO) {
         ConsoleUtil.clear();
-        String selectedLot = LotController.getOpenLotById(lotId);
-        if (selectedLot != null) {
-            System.out.println(selectedLot);
+        if (lotDTO != null) {
+            System.out.println(lotDTO);
             System.out.println("ITEMS: []");
             System.out.println();
             System.out.println("1 - ADD ITEM");
@@ -80,35 +80,35 @@ public class LotEditingUI {
         }
     }
 
-    public static void getAdditionItemUI(String lotCategory) {
-        switch (lotCategory) {
-            case "FoodItem":
-                FoodItemAdditionUI.run();
-                break;
+    public static void getAdditionItemUI(LotDTO lotDTO) {
+        switch (lotDTO.category()) {
             case "ClothingItem":
-                ClothingItemAdditionUI.run();
+                ClothingItemAdditionUI.run(lotDTO.id());
+                break;
+            case "FoodItem":
+                FoodItemAdditionUI.run(lotDTO.id());
                 break;
             case "PersonalHygieneItem":
-                PersonalHygieneItemAdditionUI.run();
+                PersonalHygieneItemAdditionUI.run(lotDTO.id());
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + lotCategory);
+                throw new IllegalStateException("Unexpected value: " + lotDTO.category());
         }
     }
 
-    public static void getSubtractionItemUI(String lotCategory) {
-        switch (lotCategory) {
-            case "FoodItem":
-                FoodItemSubtractionUI.run();
-                break;
+    public static void getSubtractionItemUI(LotDTO lotDTO) {
+        switch (lotDTO.category()) {
             case "ClothingItem":
-                ClothingItemSubtractionUI.run();
+                ClothingItemSubtractionUI.run(lotDTO.id());
+                break;
+            case "FoodItem":
+                FoodItemSubtractionUI.run(lotDTO.id());
                 break;
             case "PersonalHygieneItem":
-                PersonalHygieneItemSubtractionUI.run();
+                PersonalHygieneItemSubtractionUI.run(lotDTO.id());
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + lotCategory);
+                throw new IllegalStateException("Unexpected value: " + lotDTO.category());
         }
     }
 }
