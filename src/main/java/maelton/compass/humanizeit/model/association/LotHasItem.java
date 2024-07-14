@@ -7,6 +7,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 
 import lombok.Setter;
 
@@ -19,6 +20,7 @@ import maelton.compass.humanizeit.model.entity.item.Item;
 public class LotHasItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "registry_id")
     private Long id;
 
     @ManyToOne

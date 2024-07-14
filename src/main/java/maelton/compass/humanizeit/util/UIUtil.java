@@ -5,6 +5,16 @@ import maelton.compass.humanizeit.model.interfaces.AppEntity;
 import java.util.InputMismatchException;
 
 public class UIUtil {
+    public static void printMessage(String message, long millis) {
+        try {
+            ConsoleUtil.clear();
+            System.out.println(message);
+            Thread.sleep(millis);
+        } catch (Exception e) {
+            ConsoleUtil.clear();
+        }
+    }
+
     public static void invalidChoice() {
         try {
             ConsoleUtil.clear();
