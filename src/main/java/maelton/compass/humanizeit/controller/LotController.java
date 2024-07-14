@@ -33,24 +33,23 @@ public class LotController {
         }
     }
 
-    public static String getOpenLotById(Long id) {
-        LotDTO lot = LotService.getOpenLotById(id);
-        return lot != null ? lot.toString() : null;
+    public static LotDTO getOpenLotById(long id) {
+        return LotService.getOpenLotById(id);
     }
 
-    public static String getLotItemCategory(Long id) {
+    public static String getLotItemCategory(long id) {
         return LotService.getLotItemCategory(id);
     }
 
     public static String addClothingLot(DonationCenter manager) {
-        return UIUtil.entitySavedTest(LotService.addClothingLot(manager));
+        return UIUtil.entitySaved(LotService.addClothingLot(manager));
     };
 
     public static String addFoodLot(DonationCenter manager) {
-        return UIUtil.entitySavedTest(LotService.addFoodLot(manager));
+        return UIUtil.entitySaved(LotService.addFoodLot(manager));
     };
 
     public static String addPersonalHygieneLot(DonationCenter manager) {
-        return UIUtil.entitySavedTest(LotService.addPersonalHygieneLot(manager));
+        return UIUtil.entitySaved(LotService.addPersonalHygieneLot(manager));
     };
 }

@@ -1,6 +1,7 @@
 package maelton.compass.humanizeit.model.enums;
 
 public enum UnitOfMeasurement {
+    DEFAULT("DEFAULT"),
     KILOGRAM("kg"),
     GRAM("g"),
     LITER("l"),

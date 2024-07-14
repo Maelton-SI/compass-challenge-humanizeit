@@ -2,12 +2,11 @@ package maelton.compass.humanizeit.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import maelton.compass.humanizeit.exception.AppEntityPersistenceException;
+import maelton.compass.humanizeit.exception.AppEntitySaveFailureException;
+import maelton.compass.humanizeit.model.association.LotHasItem;
 import maelton.compass.humanizeit.model.entity.Lot;
 import maelton.compass.humanizeit.model.entity.item.Item;
-import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.JpaUtil;
-import maelton.compass.humanizeit.util.UIUtil;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class LotRepository {
             return lot;
         } catch(Exception e) {
             em.getTransaction().rollback();
-            throw new AppEntityPersistenceException(lot, e.getMessage());
+            throw new AppEntitySaveFailureException(lot, e.getMessage());
         } finally {
             em.close();
         }
@@ -58,4 +57,20 @@ public class LotRepository {
         }
         return lots;
     }
+
+    public static LotHasItem saveItemToLot(LotHasItem lotHasItemRegistry) {
+        EntityManager em = JpaUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(lotHasItemRegistry);
+            em.getTransaction().commit();
+            return lotHasItemRegistry;
+        } catch(Exception e) {
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
 }
+

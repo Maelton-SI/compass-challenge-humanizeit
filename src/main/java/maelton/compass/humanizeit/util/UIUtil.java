@@ -5,6 +5,16 @@ import maelton.compass.humanizeit.model.interfaces.AppEntity;
 import java.util.InputMismatchException;
 
 public class UIUtil {
+    public static void printMessage(String message, long millis) {
+        try {
+            ConsoleUtil.clear();
+            System.out.println(message);
+            Thread.sleep(millis);
+        } catch (Exception e) {
+            ConsoleUtil.clear();
+        }
+    }
+
     public static void invalidChoice() {
         try {
             ConsoleUtil.clear();
@@ -15,21 +25,12 @@ public class UIUtil {
         }
     }
 
-    public static void entitySaved(AppEntity entity) {
-            ConsoleUtil.clear();
-            System.out.println(entity);
-            System.out.println();
-            System.out.println("SAVED SUCCESSFULLY!");
-    }
-
-    public static String entitySavedTest(AppEntity entity) {
+    public static String entitySaved(AppEntity entity) {
         return entity.toString() + "\n" + "SAVED SUCCESSFULLY!";
     }
 
-    public static void errorSavingEntity(AppEntity entity) {
-        ConsoleUtil.clear();
-        System.out.println(entity);
-        System.out.println("COULD NOT BE SAVED!");
+    public static String errorSavingEntity(AppEntity entity) {
+        return entity.toString() + "\n" + "COULD NOT BE SAVED!";
     }
 
     public static long getChoice() {

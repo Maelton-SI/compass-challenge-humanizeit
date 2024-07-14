@@ -4,7 +4,7 @@ import maelton.compass.humanizeit.util.ConsoleUtil;
 import maelton.compass.humanizeit.util.UIUtil;
 
 public class ClothingItemSubtractionUI {
-    public static void run() {
+    public static void run(long lotId) {
         while(true) {
             showGUI();
             switch((int) UIUtil.getChoice()) {

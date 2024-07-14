@@ -8,10 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
 
+import maelton.compass.humanizeit.model.association.LotHasItem;
 import maelton.compass.humanizeit.model.dto.LotDTO;
 import maelton.compass.humanizeit.model.entity.item.Item;
 import maelton.compass.humanizeit.model.enums.DonationCenter;
@@ -19,6 +21,7 @@ import maelton.compass.humanizeit.model.enums.LotStatus;
 import maelton.compass.humanizeit.model.interfaces.AppEntity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name="tab_lot")
@@ -41,19 +44,12 @@ public class Lot<T extends Item> implements AppEntity {
     @Column(name="last_edited")
     private LocalDateTime lastTimeEdited;
 
-    protected Lot() {}
+    @OneToMany(mappedBy = "lot")
+    private Set<LotHasItem> itemRegistry;
 
+    protected Lot() {}
     public Lot(Class<T> category, DonationCenter manager) {
         this.name = "default";
-        this.category = category.getSimpleName();
-        this.quantityOfItems = 0;
-        this.status = LotStatus.OPEN;
-        this.manager = null;
-        this.lastTimeEdited = LocalDateTime.now();
-    }
-
-    public Lot(String name, Class<T> category, DonationCenter manager) {
-        this.name = name;
         this.category = category.getSimpleName();
         this.quantityOfItems = 0;
         this.status = LotStatus.OPEN;

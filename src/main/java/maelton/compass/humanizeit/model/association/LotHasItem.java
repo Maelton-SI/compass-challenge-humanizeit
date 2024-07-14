@@ -1,35 +1,36 @@
 package maelton.compass.humanizeit.model.association;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+
+import lombok.Setter;
+
 import maelton.compass.humanizeit.model.entity.Lot;
 import maelton.compass.humanizeit.model.entity.item.Item;
 
-import java.io.Serializable;
-
+@Setter
 @Entity
 @Table(name="tab_lot_has_item")
 public class LotHasItem {
-    @EmbeddedId
-    private LotHasItemId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "registry_id")
+    private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("lotId")
-    @JoinColumn(name="id_lot")
+    @ManyToOne
+    @JoinColumn(name = "lot_id", nullable = false)
     private Lot lot;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("itemId")
-    @JoinColumn(name="id_item")
+    @ManyToOne
+    @JoinColumn(name = "item_id", nullable = false)
     private Item item;
-    private int quantity;
-}
 
-@Embeddable
-class LotHasItemId implements Serializable {
-    @Column(name="lot_id")
-    private Long lotId;
-
-    @Column(name="item_id")
-    private Long itemId;
+    private int quantityOfItems;
 }
 
