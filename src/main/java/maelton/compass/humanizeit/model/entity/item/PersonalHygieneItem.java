@@ -3,7 +3,7 @@ package maelton.compass.humanizeit.model.entity.item;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Enumerated;
@@ -16,7 +16,6 @@ import maelton.compass.humanizeit.model.enums.ItemCategory;
 import maelton.compass.humanizeit.model.enums.PersonalHygieneType;
 import maelton.compass.humanizeit.model.enums.UnitOfMeasurement;
 import maelton.compass.humanizeit.model.interfaces.AppDTO;
-import maelton.compass.humanizeit.model.interfaces.Item;
 
 import java.time.LocalDateTime;
 
@@ -29,11 +28,8 @@ import java.time.LocalDateTime;
                         columnNames = {"type", "unit_of_measurement"}
                 )
         })
-public class PersonalHygieneItem implements Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class PersonalHygieneItem extends Item {
+    @Transient
     @Enumerated(EnumType.STRING)
     private final ItemCategory CATEGORY = ItemCategory.PERSONAL_HYGIENE;
 
@@ -51,6 +47,8 @@ public class PersonalHygieneItem implements Item {
     public PersonalHygieneItem(PersonalHygieneType type) {
         this.type = type;
         this.unitOfMeasurement = UnitOfMeasurement.DEFAULT;
+
+        this.category = CATEGORY;
     }
 
     @Override

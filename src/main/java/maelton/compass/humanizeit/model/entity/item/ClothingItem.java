@@ -5,7 +5,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
@@ -15,7 +15,6 @@ import lombok.Getter;
 import maelton.compass.humanizeit.model.enums.*;
 
 import maelton.compass.humanizeit.model.interfaces.AppDTO;
-import maelton.compass.humanizeit.model.interfaces.Item;
 
 @Getter
 @Entity
@@ -26,11 +25,8 @@ import maelton.compass.humanizeit.model.interfaces.Item;
                     columnNames = {"type", "gender", "size", "unit_of_measurement"}
             )
        })
-public class ClothingItem implements Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class ClothingItem extends Item {
+    @Transient
     @Enumerated(EnumType.STRING)
     private final ItemCategory CATEGORY = ItemCategory.CLOTHING;
 
@@ -53,6 +49,8 @@ public class ClothingItem implements Item {
         this.gender = ClothingGender.DEFAULT;
         this.size = ClothingSize.DEFAULT;
         this.unitOfMeasurement = UnitOfMeasurement.DEFAULT;
+
+        this.category = CATEGORY;
     }
 
     @Override

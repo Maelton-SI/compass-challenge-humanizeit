@@ -6,7 +6,7 @@ import jakarta.persistence.TypedQuery;
 import maelton.compass.humanizeit.exception.AppEntitySaveFailureException;
 import maelton.compass.humanizeit.model.entity.item.ClothingItem;
 import maelton.compass.humanizeit.model.entity.item.FoodItem;
-import maelton.compass.humanizeit.model.interfaces.Item;
+import maelton.compass.humanizeit.model.entity.item.Item;
 import maelton.compass.humanizeit.model.entity.item.PersonalHygieneItem;
 import maelton.compass.humanizeit.util.JpaUtil;
 
@@ -29,6 +29,14 @@ public class ItemRepository {
             throw new AppEntitySaveFailureException(item, e.getMessage());
         } finally {
             em.close();
+        }
+    }
+    public static Item findItem(long itemId) {
+        try(EntityManager em = JpaUtil.getEntityManager()) {
+            em.getTransaction().begin();
+                Item item = em.find(Item.class, itemId);
+            em.getTransaction().commit();
+            return findItem(item);
         }
     }
 
@@ -81,7 +89,7 @@ public class ItemRepository {
         ClothingItem item = null;
         try(EntityManager em = JpaUtil.getEntityManager()) {
             em.getTransaction().begin();
-            item = em.find(ClothingItem.class, id);
+                item = em.find(ClothingItem.class, id);
             em.getTransaction().commit();
         }
         return item;
@@ -91,7 +99,7 @@ public class ItemRepository {
         FoodItem item = null;
         try(EntityManager em = JpaUtil.getEntityManager()) {
             em.getTransaction().begin();
-            item = em.find(FoodItem.class, id);
+                item = em.find(FoodItem.class, id);
             em.getTransaction().commit();
         }
         return item;
@@ -101,7 +109,7 @@ public class ItemRepository {
         PersonalHygieneItem item = null;
         try(EntityManager em = JpaUtil.getEntityManager()) {
             em.getTransaction().begin();
-            item = em.find(PersonalHygieneItem.class, id);
+                item = em.find(PersonalHygieneItem.class, id);
             em.getTransaction().commit();
         }
         return item;

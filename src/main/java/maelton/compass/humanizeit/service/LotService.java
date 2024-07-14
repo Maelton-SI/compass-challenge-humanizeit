@@ -1,13 +1,15 @@
 package maelton.compass.humanizeit.service;
 
+import maelton.compass.humanizeit.model.association.LotHasItem;
 import maelton.compass.humanizeit.model.enums.DonationCenter;
 import maelton.compass.humanizeit.model.dto.LotDTO;
 import maelton.compass.humanizeit.model.entity.Lot;
-import maelton.compass.humanizeit.model.interfaces.Item;
+import maelton.compass.humanizeit.model.entity.item.Item;
 import maelton.compass.humanizeit.model.factory.LotFactory;
 import maelton.compass.humanizeit.model.entity.item.ClothingItem;
 import maelton.compass.humanizeit.model.entity.item.FoodItem;
 import maelton.compass.humanizeit.model.entity.item.PersonalHygieneItem;
+import maelton.compass.humanizeit.repository.ItemRepository;
 import maelton.compass.humanizeit.repository.LotRepository;
 
 import java.util.List;
@@ -56,4 +58,21 @@ public abstract class LotService {
         Lot<? extends Item> lot = LotRepository.findOpenLotById(id);
         return lot != null ? lot.getCategory() : null;
     }
+
+    public static void addItemToLot(long itemId, long lotId, int quantity) {
+        LotHasItem lotHasItemRegistry = new LotHasItem();
+            lotHasItemRegistry.setLot(LotRepository.findOpenLotById(lotId));
+            lotHasItemRegistry.setItem(ItemRepository.findItem(lotId));
+            lotHasItemRegistry.setQuantityOfItems(quantity);
+        LotRepository.saveItemToLot(lotHasItemRegistry);
+    }
+
+    public static void addItemToLot(Item item, long lotId, int quantity) {
+        LotHasItem lotHasItemRegistry = new LotHasItem();
+            lotHasItemRegistry.setLot(LotRepository.findOpenLotById(lotId));
+            lotHasItemRegistry.setItem(ItemRepository.findItem(item));
+            lotHasItemRegistry.setQuantityOfItems(quantity);
+        LotRepository.saveItemToLot(lotHasItemRegistry);
+    }
+
 }

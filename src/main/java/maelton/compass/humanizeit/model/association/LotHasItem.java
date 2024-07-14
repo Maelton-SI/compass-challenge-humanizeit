@@ -2,32 +2,33 @@ package maelton.compass.humanizeit.model.association;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.GenerationType;
 
 import lombok.Setter;
+
 import maelton.compass.humanizeit.model.entity.Lot;
-import maelton.compass.humanizeit.model.interfaces.Item;
+import maelton.compass.humanizeit.model.entity.item.Item;
 
 @Setter
 @Entity
 @Table(name="tab_lot_has_item")
 public class LotHasItem {
-    @EmbeddedId
-    private LotHasItemId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("lotId")
-    @JoinColumn(name="id_lot")
+    @ManyToOne
+    @JoinColumn(name = "lot_id", nullable = false)
     private Lot lot;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @MapsId("itemId")
-//    @JoinColumn(name="id_item")
-//    private <T implements Item> item;
-//    private int quantity;
+    @ManyToOne
+    @JoinColumn(name = "item_id", nullable = false)
+    private Item item;
+
+    private int quantityOfItems;
 }
 

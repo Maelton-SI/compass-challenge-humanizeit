@@ -5,7 +5,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
@@ -16,7 +16,6 @@ import maelton.compass.humanizeit.model.enums.FoodType;
 import maelton.compass.humanizeit.model.enums.ItemCategory;
 import maelton.compass.humanizeit.model.enums.UnitOfMeasurement;
 import maelton.compass.humanizeit.model.interfaces.AppDTO;
-import maelton.compass.humanizeit.model.interfaces.Item;
 
 import java.time.LocalDateTime;
 
@@ -29,11 +28,8 @@ import java.time.LocalDateTime;
                     columnNames = {"type", "unit_of_measurement"}
             )
        })
-public class FoodItem implements Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class FoodItem extends Item {
+    @Transient
     @Enumerated(EnumType.STRING)
     private final ItemCategory CATEGORY = ItemCategory.FOOD;
 
@@ -58,6 +54,9 @@ public class FoodItem implements Item {
     public FoodItem(FoodType type) {
         this.type = type;
         this.unitOfMeasurement = UnitOfMeasurement.DEFAULT;
+        this.expirationDate = LocalDateTime.of(2000, 1, 1, 0, 0, 0);
+
+        this.category = CATEGORY;
     }
 
     @Override
