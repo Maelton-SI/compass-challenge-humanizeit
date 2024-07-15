@@ -1,6 +1,6 @@
 # Projeto HumanizeIt
 
-O projeto consiste no desenvolvimento de uma estrutura para Backend que compreenda em uma aplicação para auxílio à desabrigados das enchentes.
+O projeto consiste no desenvolvimento de uma estrutura para Backend que compreenda em uma aplicação para auxílio aos desabrigados das enchentes.
 
 ## Regras da Aplicação
 
@@ -21,7 +21,6 @@ O  projeto  é  uma  aplicação  backend  para  auxiliar  desabrigados  em  enc
 
 - Funcionalidade de cadastro, leitura, ediçãoe exclusãode itens doados.
 - Cada lote de itens cadastrados será direcionado a um centro de distribuição específico, que  deve  ser  indicado  no  momento  do  cadastro.  Existem  3  centros  de  distribuição, listados ao final deste documento.
-- Os itens obrigatórios são:
 - Os itens obrigatórios são:
     - Roupas:
         * Descrição
