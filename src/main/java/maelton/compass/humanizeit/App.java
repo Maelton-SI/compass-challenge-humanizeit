@@ -1,11 +1,11 @@
 package maelton.compass.humanizeit;
 
-import maelton.compass.humanizeit.ui.MainUI;
-import maelton.compass.humanizeit.util.JpaUtil;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        JpaUtil.getEmptyTransaction();
-        MainUI.run();
+        SpringApplication.run(App.class, args);
     }
 }
